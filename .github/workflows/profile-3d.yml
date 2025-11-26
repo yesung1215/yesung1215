@@ -26,3 +26,16 @@ jobs:
           if git commit -m "generated"; then
             git push
           fi
+
+          name: Test Run
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Your GitHub Action is working!"
+
