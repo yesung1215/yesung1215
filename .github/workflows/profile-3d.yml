@@ -14,10 +14,12 @@ jobs:
     name: generate-github-profile-3d-contrib
     steps:
       - uses: actions/checkout@v5
+      
       - uses: yoshi389111/github-profile-3d-contrib@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
+
       - name: Commit & Push
         run: |
           git config user.name github-actions
@@ -26,16 +28,3 @@ jobs:
           if git commit -m "generated"; then
             git push
           fi
-
-          name: Test Run
-
-on:
-  workflow_dispatch:
-
-jobs:
-  hello:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say Hello
-        run: echo "Your GitHub Action is working!"
-
